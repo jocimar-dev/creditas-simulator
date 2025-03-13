@@ -1,3 +1,29 @@
-.idea
-.venv
+# Localstack data/cache
+/localstack
+/localstack-data
+/localstack_tmp
+
+# PyCharm ou outros IDEs
+.idea/
+.vscode/
+
+# __pycache__ gerado por Python
+__pycache__/
+**/__pycache__/
+
+# Arquivos de build temporário
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Arquivos de testes locais, dumps, etc
+*.db
+*.sqlite3
 .env
+.env.*
+
+# Pastas ocultas que não precisam ir pro repo
+*.egg-info/
+dist/
+build/
