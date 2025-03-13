@@ -31,13 +31,23 @@ Ensure you have the following installed:
  cd creditas-simulator
 ```
 
-### 2️⃣ **Install Dependencies with Poetry**
+### **Create a Virtual Environment**
 ```sh
-poetry install
+python -m venv venv
+```
+
+### **Activate the Virtual Environment**
+- **Linux**
+```sh
+source venv/bin/activate
+```
+- **Windows**
+```sh
+
+.\venv\Scripts\activate
 ```
 
 **Load Environment Variables**
-
 Make sure the `.env `file is in the root of your project and contains all the necessary environment variables
 ```.env
 # Ambiente de desenvolvimento
@@ -72,6 +82,12 @@ USE_SIMULATED_EMAIL=true
 JWT_SECRET=secret_creditas
 JWT_ALGORITHM=HS256
 ```
+
+### 2️⃣ **Install Dependencies with Poetry**
+```sh
+poetry install
+```
+
 ### 3️⃣ **Run the API Locally**
 ```sh
 poetry run uvicorn app.main:app --reload
