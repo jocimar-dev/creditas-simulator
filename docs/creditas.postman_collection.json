@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "d1e495e6-be92-4aaf-a9f9-efe676f7f0b4",
+		"name": "creditas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32449323"
+	},
+	"item": [
+		{
+			"name": "v2",
+			"item": [
+				{
+					"name": "simulate_bacth_v2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"principal_data\": {\n            \"loan_amount\": 10000.0,\n            \"birth_date\": \"1985-06-10\",\n            \"installment\": 12,\n            \"interest_rate_type\": \"fixed\",\n            \"currency\": \"BRL\"\n        },\n        \"personal_request\": {\n            \"full_name\": \"Jocimar Neres\",\n            \"document_number\": \"12345678900\",\n            \"marital_status\": \"single\",\n            \"dependents\": 1\n        },\n        \"contact_request\": {\n            \"address\": \"Rua Exemplo, 123\",\n            \"phone\": \"+55 11 91234-5678\",\n            \"email\": \"jocimarneres@gmail.com\"\n        },\n        \"financial_request\": {\n            \"monthly_income\": 5000.0,\n            \"monthly_expenses\": 2000.0,\n            \"real_estate_value\": 150000.0,\n            \"vehicle_value\": 40000.0\n        }\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8000/v2/simulate/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v2",
+								"simulate",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "simulate_bacth",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"principal_data\": {\n            \"loan_amount\": 10000.0,\n            \"birth_date\": \"1985-06-10\",\n            \"installment\": 12,\n            \"interest_rate_type\": \"fixed\",\n            \"currency\": \"BRL\"\n        },\n        \"personal_request\": {\n            \"full_name\": \"Jocimar Neres\",\n            \"document_number\": \"12345678900\",\n            \"marital_status\": \"single\",\n            \"dependents\": 1\n        },\n        \"contact_request\": {\n            \"address\": \"Rua Exemplo, 123\",\n            \"phone\": \"+55 11 91234-5678\",\n            \"email\": \"jocimarneres@gmail.com\"\n        },\n        \"financial_request\": {\n            \"monthly_income\": 5000.00,\n            \"monthly_expenses\": 2000.00,\n            \"real_estate_value\": 150000.00,\n            \"vehicle_value\": 40000.00\n        }\n    },\n    {\n        \"principal_data\": {\n            \"loan_amount\": 50000.0,\n            \"birth_date\": \"1950-06-10\",\n            \"installment\": 12,\n            \"interest_rate_type\": \"fixed\",\n            \"currency\": \"BRL\"\n        },\n        \"personal_request\": {\n            \"full_name\": \"Jocimar Neres\",\n            \"document_number\": \"12345678900\",\n            \"marital_status\": \"single\",\n            \"dependents\": 1\n        },\n        \"contact_request\": {\n            \"address\": \"Rua Exemplo, 123\",\n            \"phone\": \"+55 11 91234-5678\",\n            \"email\": \"neresdevelop@gmail.com\"\n        },\n        \"financial_request\": {\n            \"monthly_income\": 15000.00,\n            \"monthly_expenses\": 8000.00,\n            \"real_estate_value\": 300000.00,\n            \"vehicle_value\": 100000.00\n        }\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8000/simulate/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"simulate",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "simulate",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"principal_data\": {\n    \"loan_amount\": 10000.0,\n    \"birth_date\": \"1985-06-10\",\n    \"installment\": 12,\n    \"interest_rate_type\": \"fixed\",\n    \"currency\": \"BRL\"\n  },\n  \"personal_request\": {\n    \"full_name\": \"Jocimar Neres\",\n    \"document_number\": \"12345678900\",\n    \"marital_status\": \"single\",\n    \"dependents\": 1\n  },\n  \"contact_request\": {\n    \"address\": \"Rua Exemplo, 123\",\n    \"phone\": \"+55 11 91234-5678\",\n    \"email\": \"jocimarneres@gmail.com\"\n  },\n  \"financial_request\": {\n    \"monthly_income\": 5000.00,\n    \"monthly_expenses\": 2000.00,\n    \"real_estate_value\": 150000.00,\n    \"vehicle_value\": 40000.00\n  }\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8000/simulate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"simulate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "Token Request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"jwt_token\", jsonData.token);",
+									"    console.log(\"Token JWT salvo com sucesso!\");",
+									"} else {",
+									"    console.error(\"❌ Token não encontrado na resposta\");",
+									"}",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"creditas\",\n    \"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/generate-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"generate-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2NpbWFyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzQxODQ4ODY2fQ.Fx7aeP0tAS8fOTMskba46Y2bE7PbMvBt-ggG5gwhaB8",
+			"type": "string"
+		}
+	]
+}

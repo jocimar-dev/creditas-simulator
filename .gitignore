@@ -27,3 +27,12 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+
+/awscliv2.zip
+/aws/install
+/backend/localstack-data/cache/machine.json
+/aws/README.md
+/backend/localstack-data/cache/server.test.pem
+/backend/localstack-data/cache/server.test.pem.crt
+/backend/localstack-data/cache/server.test.pem.key
+/aws/THIRD_PARTY_LICENSES
