@@ -1,20 +1,26 @@
-[project]
-name = "creditas"
+[tool.poetry]
+name = "creditas-simulator"
 version = "0.1.0"
 description = "Credit simulation system with variations based on the user profile"
-authors = [
-    {name = "Jocimar Neres",email = "jocimarneres@gmail.com"}
-]
-license = {text = "MIT"}
+authors = ["Jocimar Neres <jocimarneres@gmail.com>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "fastapi (>=0.115.11,<0.116.0)",
-    "uvicorn (>=0.34.0,<0.35.0)",
-    "pydantic (>=2.10.6,<3.0.0)",
-    "pytest (>=8.3.5,<9.0.0)"
-]
+package-mode = false
 
+[tool.poetry.dependencies]
+python = ">=3.12"
+fastapi = ">=0.115.11,<0.116.0"
+uvicorn = ">=0.34.0,<0.35.0"
+pydantic = ">=2.10.6,<3.0.0"
+pytz = "*"
+python-jose = "*"
+python-dotenv = "*"
+email-validator = "*"
+forex-python= "*"
+boto3= "*"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=8.3.5,<9.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
