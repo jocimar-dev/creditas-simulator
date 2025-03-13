@@ -36,7 +36,10 @@ def calculate_loan(loan_amount: float, interest_rate: float, installment: int):
 
 
 def convert_currency(amount, from_currency, to_currency):
-    if os.getenv("USE_SIMULATED_CONVERSION").lower() == "true":
+    if from_currency == to_currency:
+        return amount
+
+    if os.getenv("USE_SIMULATED_CONVERSION", "false").lower() == "true":
         conversion_rates = {
             ("USD", "BRL"): 5.0,
             ("EUR", "BRL"): 6.0,

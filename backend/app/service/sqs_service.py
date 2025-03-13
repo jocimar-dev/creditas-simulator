@@ -45,11 +45,12 @@ class SQSService:
                 MessageBody=json.dumps(message_body)
             )
             logger.info("Message sent to SQS: %s", response["MessageId"])
+            return response
         except Exception as e:
             logger.error("Failed to send message to SQS: %s", e)
             raise
 
-    def receive_messages(self, max_messages: int = 10):
+    async def receive_messages(self, max_messages: int = 10):
         try:
             response = self.sqs.receive_message(
                 QueueUrl=self.queue_url,
@@ -61,7 +62,7 @@ class SQSService:
             logger.error("Failed to receive messages from SQS: %s", e)
             raise
 
-    def delete_message(self, receipt_handle: str):
+    async def delete_message(self, receipt_handle: str):
         try:
             self.sqs.delete_message(
                 QueueUrl=self.queue_url,
