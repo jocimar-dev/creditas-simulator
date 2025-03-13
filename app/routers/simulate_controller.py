@@ -28,8 +28,8 @@ logger.info(f"SMTP_SERVER: {smtp_server}")
 
 # Validação básica para evitar valores None
 if not all([smtp_server, smtp_port, smtp_username, smtp_password]):
-    logger.error("❌ Variáveis de ambiente SMTP estão incompletas. Verifique seu arquivo .env.")
-    raise ValueError("Variáveis de ambiente SMTP estão incompletas.")
+    logger.error("❌ SMTP environment variables are incomplete. Check your .env file.")
+    raise ValueError("SMTP environment variables are incomplete.")
 
 # Instanciando o EmailService com as variáveis carregadas corretamente
 email_service = EmailService(
@@ -40,7 +40,9 @@ email_service = EmailService(
 )
 email_factory = EmailFactory(email_service)
 
-@router.post("/simulate", response_model=LoanSimulationResponse)
+@router.post("/simulate", response_model=LoanSimulationResponse,
+             summary="Simulate Loan", description=
+             "Performs a simulation of an individual loan based on the data provided by the user.")
 async def simulate_loan(request: LoanSimulationRequest):
     logger.info("Loan simulation request received for %s", request.personal_request.full_name)
 
@@ -53,7 +55,9 @@ async def simulate_loan(request: LoanSimulationRequest):
     return response
 
 
-@router.post("/simulate/batch", response_model=List[LoanSimulationResponse])
+@router.post("/simulate/batch", response_model=List[LoanSimulationResponse],
+             summary="Simulate Loan Batch", description=
+             "Runs multiple loan simulations in a single request, returning the results for each item in the list.")
 async def simulate_loan_batch(requests: List[LoanSimulationRequest]):
     logger.info("Batch loan simulation request received: %d requests", len(requests))
 

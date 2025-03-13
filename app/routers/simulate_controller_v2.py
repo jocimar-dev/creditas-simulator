@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 from app.routers.simulate_controller import email_service
 from app.dtos.loan_request import LoanSimulationRequest
 from app.dtos.loan_result import LoanSimulationResponse
-from app.service.messaging import sqs_service
 from app.adapters.messaging.generate_email_body import generate_email_body
 from app.validators.auth.validate_token import validate_token
 from app.validators.simulation.process_loan_simulation import process_loan_simulation
@@ -31,7 +30,10 @@ region = os.getenv("AWS_REGION")
 
 
 @router.post("/v2/simulate/batch", response_model=List[LoanSimulationResponse],
-                dependencies=[Depends(validate_token)])
+                dependencies=[Depends(validate_token)],
+                summary="Simulate Loan Batch - Version 2.0", description=
+             "Version 2 of the individual loan simulation endpoint with performance improvements and asynchronous validation."
+             )
 async def simulate_loan_batch(
     requests: List[LoanSimulationRequest]
 ):
